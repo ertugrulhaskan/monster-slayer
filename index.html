@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="flex flex-row justify-center m-10 buttons-wrapper" v-if="!winner">
-        <button @click="attack">Attack</button>
+        <button @click="playerAttack">Attack</button>
         <button @click="specialAttack" :disabled="roundCounter">Special Attack</button>
         <button @click="heal" v-if="healCounter">Heal</button>
       </div>
