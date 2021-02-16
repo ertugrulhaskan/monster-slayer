@@ -38,4 +38,11 @@
   margin-bottom: 5px;
   background: #f7f7f7;
   border-radius: 4px;
+  font-size: 1.25rem;
+}
+
+.logs li i {
+  display: inline-block;
+  margin-right: 15px;
+  font-style: normal;
 }
