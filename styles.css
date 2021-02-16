@@ -41,6 +41,7 @@
   font-size: 1.25rem;
 }
 
+.winner-wrapper i,
 .logs li i {
   display: inline-block;
   margin-right: 15px;

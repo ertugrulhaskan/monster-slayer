@@ -10,6 +10,7 @@ const app = Vue.createApp({
       roundCounter: 0,
       healCounter: 3,
       winner: null,
+      gameLogs: [],
     };
   },
   watch: {
@@ -55,6 +56,7 @@ const app = Vue.createApp({
       this.roundCounter = 0;
       this.healCounter = 3;
       this.winner = null;
+      this.gameLogs = [];
     },
     playerAttack() {
       if (this.roundCounter > 0) {
@@ -63,22 +65,33 @@ const app = Vue.createApp({
       playerAttackVal = getRandom(10, 5);
       this.monsterHealth -= playerAttackVal;
       this.monsterAttack(15, 10);
+      this.logsPrint('player', 'attack', playerAttackVal);
     },
     specialAttack() {
       this.roundCounter++;
       playerAttackVal = getRandom(20, 10);
       this.monsterHealth -= playerAttackVal;
       this.monsterAttack(15, 5);
+      this.logsPrint('player', 'special-attack', playerAttackVal);
     },
     heal() {
       this.healCounter--;
       healVal = getRandom(30, 15);
       this.playerHealth += healVal;
       this.monsterAttack(15, 5);
+      this.logsPrint('player', 'heal', healVal);
     },
     monsterAttack(maxDamage, minDamage) {
       monsterAttackVal = getRandom(maxDamage, minDamage);
       this.playerHealth -= monsterAttackVal;
+      this.logsPrint('monster', 'attack', monsterAttackVal);
+    },
+    logsPrint(who, what, value) {
+      this.gameLogs.unshift({
+        actionWho: who,
+        actionWhat: what,
+        actionValue: value,
+      });
     },
   },
 });

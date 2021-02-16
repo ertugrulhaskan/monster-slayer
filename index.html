@@ -20,9 +20,9 @@
         </div>
         <div class="flex flex-col justify-center winner-wrapper text-center" v-if="winner">
           <h1 class="text-5xl mb-4">Game Over</h1>
-          <p class="text-2xl" v-if="winner === 'monster'">Monster won!</p>
-          <p class="text-2xl" v-else-if="winner === 'player'">You won!</p>
-          <p class="text-2xl" v-else>It's draw!</p>
+          <p class="text-2xl text-red-600" v-if="winner === 'monster'"><i>🐲</i>Monster won!</p>
+          <p class="text-2xl text-green-600" v-else-if="winner === 'player'"><i>🙂</i>You won!</p>
+          <p class="text-2xl text-blue-600" v-else>It's draw!</p>
         </div>
         <div class="w-1/3 bg-gray-100 rounded-xl p-8 player-card">
           <h2 class="text-2xl text-center mb-4">Player</h2>
@@ -37,12 +37,13 @@
       <div class="flex flex-row justify-center m-10 buttons-wrapper" v-else>
         <button @click="newGame">New Game</button>
       </div>
-      <div class="logs">
+      <div class="logs" v-if="gameLogs.length > 0">
         <h3 class="mb-5 text-center text-2xl">Logs</h3>
         <ul>
-          <li><i>🐲</i>Monster attacked to player that damage 30 points</li>
-          <li><i>🙂</i>Player attacked to player that damage 20 points</li>
-          <li><i>💊</i>Player used to heal rights 10 points</li>
+          <li v-for="logItem in gameLogs">
+            <span v-if="logItem.actionWhat === 'heal'">player used to pills {{ logItem.actionValue }}</span>
+            <span v-else>{{ logItem.actionWho }} {{ logItem.actionWhat }} that damage {{ logItem.actionValue }} points</span>
+          </li>
         </ul>
       </div>
     </div>
