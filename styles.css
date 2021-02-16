@@ -1,7 +1,6 @@
 .healt-bar {
   height: 2rem;
   background: #fff;
-  border: 1px solid #e0e0e0;
 }
 .healt-bar i {
   display: block;
@@ -25,9 +24,13 @@
   outline: none;
 }
 
-.buttons-wrapper button:hover {
+.buttons-wrapper button:hover,
+.buttons-wrapper button:focus {
   background-color: #363636;
   color: #e0e0e0;
+}
+.buttons-wrapper button:disabled {
+  color: #bbbbbb;
 }
 
 .logs li {
